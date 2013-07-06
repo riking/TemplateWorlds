@@ -1,0 +1,9 @@
+name: TemplateWorlds
+version: ${project.version}
+description: Plugin library to reset a world to a template
+
+author: riking
+website: http://dev.bukkit.org/bukkit-plugins/templateworlds/
+
+main: me.riking.templateworlds.api.TemplateWorlds
+load: STARTUP
