@@ -4,7 +4,9 @@
 	<groupId>me.riking.lib.templateworlds</groupId>
 	<artifactId>templateworlds</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>TemplateWorlds</name>
+	<description>Make a world that can revert back to a unchanging state</description>
 	<url>http://dev.bukkit.org/bukkit-plugins/templateworlds/</url>
 	<issueManagement>
 		<url>https://github.com/riking/TemplateWorlds/issues</url>
@@ -37,13 +39,10 @@
 		</plugins>
 	</build>
 	<repositories>
+		<!-- This is required -->
 		<repository>
 			<id>bukkit-repo</id>
 			<url>http://repo.bukkit.org/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>Plugin MetricsExtension</id>
-			<url>http://repo.turt2live.com</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -65,10 +64,27 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-    <scm>
-        <url>https://github.com/riking/TemplateWorlds</url>
-        <developerConnection>git@github.com:riking/TemplateWorlds.git</developerConnection>
-        <connection>git@github.com:riking/TemplateWorlds.git</connection>
-    </scm>
-    <description>Make a world that can revert back to a unchanging state</description>
+	<scm>
+		<url>https://github.com/riking/TemplateWorlds</url>
+		<developerConnection>scm:git:git@github.com:riking/TemplateWorlds.git</developerConnection>
+		<connection>scm:git:git@github.com:riking/TemplateWorlds.git</connection>
+	</scm>
+	<developers>
+		<developer>
+			<name>riking</name>
+			<id>@riking</id>
+			<email>rikingcoding@gmail.com</email>
+			<timezone>-8</timezone>
+			<roles>
+				<role>creator</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>BSD 2-Clause License</name>
+			<url>http://opensource.org/licenses/BSD-2-Clause</url>
+		</license>
+	</licenses>
 </project>
