@@ -17,6 +17,6 @@ this.lobby = twApi.createWorld("lobby", templateLobby);
 ```
 Let's say that while the players are waiting for the game to start, the lobby world gets a bit trashed. To revert it back, you want to first remove all players from that world - maybe the game starts, so there's nobody there anymore.
 Use the resetArea() method over the whole area that the lobby is in:
-```
+```java
 twApi.resetArea(this.lobby, -5, -5, 5, 5);
 ```
