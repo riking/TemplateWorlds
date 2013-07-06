@@ -16,8 +16,10 @@ public class TemplateWorlds extends JavaPlugin {
     public void onEnable() {
         try {
             api = new CBApiMain(this);
+            getLogger().info("TemplateWorlds loaded with CraftBukkit loader!");
         } catch (Throwable t) {
             api = new BukkitApiMain(this);
+            getLogger().info("TemplateWorlds loaded with Bukkit-only loader!");
         }
         api.onEnable();
     }
@@ -27,6 +29,13 @@ public class TemplateWorlds extends JavaPlugin {
         api.onDisable();
     }
 
+    /**
+     * Get the ApiMain class, which is used for all operations.
+     * <p>
+     * Please don't try to instanceof the ApiMain, you shouldn't need to.
+     *
+     * @return the ApiMain
+     */
     public ApiMain getApi() {
         return api;
     }
