@@ -138,6 +138,10 @@ public class TemplateBlockPopulator extends BlockPopulator {
                 target.update();
             }
         }
+
+        // Request cleanup
+        sourceChunk = null;
+        templateWorld.unloadChunkRequest(targetChunk.getX(), targetChunk.getZ());
     }
 
     public void copyInventory(Inventory source, Inventory dest) {

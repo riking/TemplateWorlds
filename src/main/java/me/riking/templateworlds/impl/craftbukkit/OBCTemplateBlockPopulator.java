@@ -65,5 +65,9 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
 
         // Add the entities to the world
         target.addEntities();
+
+        // Request cleanup
+        sourceChunk = null;
+        templateWorld.unloadChunkRequest(targetChunk.getX(), targetChunk.getZ());
     }
 }
