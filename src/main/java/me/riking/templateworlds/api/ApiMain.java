@@ -28,7 +28,9 @@ public interface ApiMain {
 
     /**
      * Create a templated world with the given name, template world, and extra
-     * BlockPopulators
+     * BlockPopulators from your plugin. (This will typically create a
+     * different world each time, assuming the Populator uses the Random
+     * argument.)
      *
      * @param name name of the world folder for the templated world
      * @param template the world to use as the template
