@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class TemplateWorlds extends JavaPlugin {
     private ApiMain api;
+    private static TemplateWorlds instance;
 
     @Override
     public void onLoad() {
@@ -14,6 +15,7 @@ public class TemplateWorlds extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
         try {
             api = new CBApiMain(this);
             getLogger().info("TemplateWorlds loaded with CraftBukkit loader!");
@@ -27,6 +29,15 @@ public class TemplateWorlds extends JavaPlugin {
     @Override
     public void onDisable() {
         api.onDisable();
+        instance = null;
+    }
+
+    /**
+     * Get the instance of the plugin.
+     * @return the plugin instance, or null if disabled
+     */
+    public static TemplateWorlds getInstance() {
+        return instance;
     }
 
     /**
@@ -38,5 +49,16 @@ public class TemplateWorlds extends JavaPlugin {
      */
     public ApiMain getApi() {
         return api;
+    }
+
+    /**
+     * Get the ApiMain class, which is used for all operations.
+     * <p>
+     * Please don't try to instanceof the ApiMain, you shouldn't need to.
+     *
+     * @return the ApiMain
+     */
+    public static ApiMain getApiStatic() {
+        return instance.api;
     }
 }
