@@ -13,7 +13,7 @@ public class BiomedVoidGenerator extends TemplatedGenerator {
     }
 
     public short[][] generateExtBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
-        ChunkSnapshot templateChunk = templateWorld.getChunkAt(x, z).getChunkSnapshot();
+        ChunkSnapshot templateChunk = templateWorld.getChunkAt(x, z).getChunkSnapshot(true, true, false);
         for (int px = 0; px < 16; px++) {
             for (int pz = 0; pz < 16; pz++) {
                 biomes.setBiome(px, pz, templateChunk.getBiome(px, pz));

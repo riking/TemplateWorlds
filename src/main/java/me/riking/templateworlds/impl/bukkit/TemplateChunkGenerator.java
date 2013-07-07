@@ -14,7 +14,7 @@ public class TemplateChunkGenerator extends TemplatedGenerator {
 
     @Override
     public short[][] generateExtBlockSections(World contextWorld, Random worldRandom, int cx, int cz, BiomeGrid biomes) {
-        ChunkSnapshot templateChunk = templateWorld.getChunkAt(cx, cz).getChunkSnapshot();
+        ChunkSnapshot templateChunk = templateWorld.getChunkAt(cx, cz).getChunkSnapshot(true, true, false);
 
         // Load block IDs
         short[][] result = new short[256 / 16][];
