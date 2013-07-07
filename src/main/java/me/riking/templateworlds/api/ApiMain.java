@@ -47,6 +47,39 @@ public interface ApiMain {
     public boolean isTemplatedWorld(World world);
 
     /**
+     * Reset all chunks in the given area to the chunks in the template world
+     * over time. The provided Runnable will be executed once the reset is
+     * complete.
+     *
+     * @param templated A templated world
+     * @param chunkMinX low chunk-coord X to regenerate
+     * @param chunkMinZ low chunk-coord Z to regenerate
+     * @param chunkMaxX high chunk-coord X to regenerate
+     * @param chunkMaxZ high chunk-coord Z to regenerate
+     * @param callback A Runnable to execute once the resetting is completed.
+     *            It will be executed on the server main thread. May be null.
+     * @throws IllegalArgumentException if max < min
+     * @throws IllegalArgumentException if the provided world is not a
+     *             templated world
+     */
+    public void resetAreaGradually(World templated, int chunkMinX, int chunkMinZ, int chunkMaxX, int chunkMaxZ, Runnable callback);
+
+    /**
+     * Reset all chunks in the area bounded in X and Z by the two locations to
+     * the chunks in the template world over time. The provided Runnable will
+     * be executed once the reset is complete.
+     *
+     * @param templated A templated world
+     * @param a one corner of the bounding box
+     * @param b opposite corner of the bounding box
+     * @param callback A Runnable to execute once the resetting is completed.
+     *            It will be executed on the server main thread. May be null.
+     * @throws IllegalArgumentException if the provided world is not a
+     *             templated world
+     */
+    public void resetAreaGradually(World templated, Location a, Location b, Runnable callback);
+
+    /**
      * Reset all chunks in the given area to the chunks in the template world.
      *
      * @param templated A templated world

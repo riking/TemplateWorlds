@@ -1,6 +1,7 @@
 package me.riking.templateworlds.impl.common;
 
 import me.riking.templateworlds.api.ApiMain;
+import me.riking.templateworlds.api.TemplateWorlds;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Chunk;
@@ -32,6 +33,15 @@ public abstract class BaseApiMain implements ApiMain {
     }
 
     @Override
+    public void resetAreaGradually(World templated, int chunkMinX, int chunkMinZ, int chunkMaxX, int chunkMaxZ, Runnable callback) {
+        validateTemplatedWorld(templated);
+        Validate.isTrue(chunkMinX <= chunkMaxX);
+        Validate.isTrue(chunkMinZ <= chunkMaxZ);
+        ChunkAreaIterator iter = new ChunkAreaIterator(chunkMinX, chunkMinZ, chunkMaxX, chunkMaxZ);
+        new ResetWorldTask(templated, iter, callback).runTaskTimer(TemplateWorlds.getInstance(), 0, 1);
+    }
+
+    @Override
     public void resetArea(World templated, Location a, Location b) {
         validateTemplatedWorld(templated);
 
@@ -51,5 +61,23 @@ public abstract class BaseApiMain implements ApiMain {
                 templated.regenerateChunk(cx, cz);
             }
         }
+    }
+
+    @Override
+    public void resetAreaGradually(World templated, Location a, Location b, Runnable callback) {
+        validateTemplatedWorld(templated);
+
+        Chunk ca = a.getChunk();
+        Chunk cb = b.getChunk();
+        int cax = ca.getX();
+        int caz = ca.getZ();
+        int cbx = cb.getX();
+        int cbz = cb.getZ();
+        int lowX  =  (cax < cbx) ? cax : cbx;
+        int highX = !(cax < cbx) ? cax : cbx;
+        int lowZ  =  (caz < cbz) ? caz : cbz;
+        int highZ = !(caz < cbz) ? caz : cbz;
+        ChunkAreaIterator iter = new ChunkAreaIterator(lowX, lowZ, highX, highZ);
+        new ResetWorldTask(templated, iter, callback).runTask(TemplateWorlds.getInstance());
     }
 }
