@@ -5,6 +5,7 @@ import java.util.Random;
 
 import net.minecraft.server.v1_6_R1.Chunk;
 import net.minecraft.server.v1_6_R1.Entity;
+import net.minecraft.server.v1_6_R1.EntityHuman;
 import net.minecraft.server.v1_6_R1.EntityTypes;
 import net.minecraft.server.v1_6_R1.NBTTagCompound;
 import net.minecraft.server.v1_6_R1.TileEntity;
@@ -38,6 +39,9 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
         for (List<?> l : source.entitySlices) {
             for (Object o : l) {
                 if (!(o instanceof Entity)) {
+                    continue;
+                }
+                if (o instanceof EntityHuman) {
                     continue;
                 }
                 Entity orig = (Entity) o;
