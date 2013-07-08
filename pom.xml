@@ -12,8 +12,13 @@
 		<url>https://github.com/riking/TemplateWorlds/issues</url>
 		<system>GitHub</system>
 	</issueManagement>
+
+	<!-- Building for release goals: mvn clean install source:jar javadoc:jar -->
+
 	<build>
+		<finalName>TemplateWorlds-${project.version}</finalName>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
 		<resources>
 			<resource>
 				<targetPath>.</targetPath>
@@ -63,6 +68,11 @@
 						</plugin>
 					</reportPlugins>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 			</plugin>
 		</plugins>
 	</build>
