@@ -49,7 +49,7 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
                     }
                     // Straight NibbleArray clones
                     tSec.setIdArray(sSec.getIdArray().clone());
-                    tSec.setDataArray(new NibbleArray(sSec.getDataArray().a.clone(), 4));
+                    tSec.setDataArray(new NibbleArray(sSec.getDataArray().a.clone(), 4)); // NibbleArray.rawData
                     tSec.setEmittedLightArray(new NibbleArray(sSec.getEmittedLightArray().a.clone(), 4));
 
                     // Could be null
@@ -84,10 +84,10 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
                 Entity orig = (Entity) o;
                 NBTTagCompound tag = new NBTTagCompound();
                 // Save entity to NBT
-                orig.e(tag);
-                tag.setString("id", EntityTypes.b(orig));
+                orig.e(tag); // Entity.saveToNBT(NBTTagCompound)
+                tag.setString("id", EntityTypes.b(orig)); // EntityTypes.getIdString(Entity)
                 // Reload the entity in target world, add to target chunk
-                target.a(EntityTypes.a(tag, targetWorld));
+                target.a(EntityTypes.a(tag, targetWorld)); // Chunk.addEntity(Entity), EntityTypes.loadEntityFromNBT(NBTTagCompound, World)
             }
         }
 
@@ -99,16 +99,17 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
             TileEntity orig = (TileEntity) o;
             NBTTagCompound tag = new NBTTagCompound();
             // Save tile entity to NBT
-            orig.b(tag);
+            orig.b(tag); // TileEntity.saveToNBT(NBTTagCompound)
             // Reload the tile entity, add to target chunk
-            target.a(TileEntity.c(tag));
+            target.a(TileEntity.c(tag)); // Chunk.addTileEntity(TileEntity), TileEntity.createFromNBT(NBTTagCompound)
         }
 
         // Add the entities to the world
         target.addEntities();
 
-        // Request cleanup
+        // Request unload
         sourceChunk = null;
+        source = null;
         templateWorld.unloadChunkRequest(targetChunk.getX(), targetChunk.getZ());
     }
 }
