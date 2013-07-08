@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>templateworlds-plugin</artifactId>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>me.riking.lib.templateworlds</groupId>
+		<artifactId>templateworlds-parent</artifactId>
+		<version>1.1.2-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>me.riking.lib.templateworlds</groupId>
+			<artifactId>templateworlds</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.riking.lib.templateworlds</groupId>
+			<artifactId>templateworlds-impl-common</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.riking.lib.templateworlds</groupId>
+			<artifactId>templateworlds-impl-bukkit</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.riking.lib.templateworlds</groupId>
+			<artifactId>templateworlds-impl-cb-1-5-R3</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.riking.lib.templateworlds</groupId>
+			<artifactId>templateworlds-impl-cb-1-6-R1</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

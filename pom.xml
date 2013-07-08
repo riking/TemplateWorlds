@@ -2,80 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>me.riking.lib.templateworlds</groupId>
-	<artifactId>templateworlds</artifactId>
-	<version>1.1.2</version>
-	<packaging>jar</packaging>
-	<name>TemplateWorlds</name>
-	<description>Make a world that can revert back to a unchanging state</description>
-	<url>http://dev.bukkit.org/bukkit-plugins/templateworlds/</url>
-	<issueManagement>
-		<url>https://github.com/riking/TemplateWorlds/issues</url>
-		<system>GitHub</system>
-	</issueManagement>
+	<artifactId>templateworlds-parent</artifactId>
+	<version>1.2.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<bukkit.version>1.6.1-R0.1-SNAPSHOT</bukkit.version>
+	</properties>
 
 	<!-- Building for release goals: mvn clean install source:jar javadoc:jar -->
 
-	<build>
-		<finalName>TemplateWorlds-${project.version}</finalName>
-		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-		<resources>
-			<resource>
-				<targetPath>.</targetPath>
-				<filtering>true</filtering>
-				<directory>${basedir}/src/main/resources/</directory>
-				<includes>
-					<include>*.yml</include>
-				</includes>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<excludes>
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.0-beta-3</version>
-				<configuration>
-					<reportPlugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>2.7</version>
-							<configuration>
-								<subpackages>me.riking.templateworlds.api</subpackages>
-								<links>
-									<link>http://jd.bukkit.org/rb/apidocs</link>
-								</links>
-								<linksource>true</linksource>
-							</configuration>
-							<reportSets>
-								<reportSet>
-									<reports>
-										<report>javadoc</report>
-									</reports>
-								</reportSet>
-							</reportSets>
-						</plugin>
-					</reportPlugins>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.2.1</version>
-			</plugin>
-		</plugins>
-	</build>
 	<repositories>
 		<!-- This is required -->
 		<repository>
@@ -83,52 +20,46 @@
 			<url>http://repo.bukkit.org/content/groups/public/</url>
 		</repository>
 	</repositories>
-	<dependencies>
-		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>bukkit</artifactId>
-			<version>1.6.1-R0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>craftbukkit</artifactId>
-			<version>1.6.1-R0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	<scm>
-		<url>https://github.com/riking/TemplateWorlds</url>
-		<developerConnection>scm:git:git@github.com:riking/TemplateWorlds.git</developerConnection>
-		<connection>scm:git:git@github.com:riking/TemplateWorlds.git</connection>
-	</scm>
-	<developers>
-		<developer>
-			<name>riking</name>
-			<id>@riking</id>
-			<email>rikingcoding@gmail.com</email>
-			<timezone>-8</timezone>
-			<roles>
-				<role>creator</role>
-				<role>maintainer</role>
-			</roles>
-		</developer>
-	</developers>
-	<licenses>
-		<license>
-			<name>BSD 2-Clause License</name>
-			<url>http://opensource.org/licenses/BSD-2-Clause</url>
-		</license>
-	</licenses>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.bukkit</groupId>
+				<artifactId>bukkit</artifactId>
+				<version>${bukkit.version}</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>api</module>
+		<module>bukkit</module>
+		<module>cb1_5_R3</module>
+		<module>cb1_6_R1</module>
+		<module>common</module>
+		<module>plugin</module>
+	</modules>
 </project>
