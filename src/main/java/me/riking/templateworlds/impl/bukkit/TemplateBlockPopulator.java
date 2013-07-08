@@ -49,7 +49,7 @@ public class TemplateBlockPopulator extends BlockPopulator {
                     for (int z = 0; z < 16; z++) {
                         pz = bz + z;
                         target = targetChunk.getBlock(px, py, pz);
-                        target.setTypeIdAndData(sourceSnap.getBlockTypeId(px, py, pz), (byte) sourceSnap.getBlockData(px, py, pz), false);
+                        target.setTypeIdAndData(sourceSnap.getBlockTypeId(x, py, z), (byte) sourceSnap.getBlockData(x, py, z), false);
                     }
                 }
             }
