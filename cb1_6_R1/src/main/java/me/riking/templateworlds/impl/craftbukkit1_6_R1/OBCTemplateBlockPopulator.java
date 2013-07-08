@@ -1,5 +1,6 @@
 package me.riking.templateworlds.impl.craftbukkit1_6_R1;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 
@@ -20,6 +21,18 @@ import org.bukkit.generator.BlockPopulator;
 
 public class OBCTemplateBlockPopulator extends BlockPopulator {
     private final World templateWorld;
+    private static Field extendedIdArray;
+    private static Field skyLightArray;
+
+    static {
+        try {
+            extendedIdArray = ChunkSection.class.getDeclaredField("extBlockIds");
+            extendedIdArray.setAccessible(true);
+            skyLightArray = ChunkSection.class.getDeclaredField("skyLight");
+            skyLightArray.setAccessible(true);
+        } catch (Exception e) {
+        }
+    }
 
     public OBCTemplateBlockPopulator(World world) {
         templateWorld = world;
@@ -57,13 +70,25 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
                     if (nar != null) {
                         tSec.setExtendedIdArray(new NibbleArray(nar.a.clone(), 4));
                     } else {
-                        tSec.setExtendedIdArray(null);
+                        if (tSec.getExtendedIdArray() != null) {
+                            try {
+                                extendedIdArray.set(tSec, null);
+                            } catch (Exception e) {
+                                tSec.setExtendedIdArray(new NibbleArray(4096, 4));
+                            }
+                        }
                     }
                     nar = sSec.getSkyLightArray();
                     if (nar != null) {
                         tSec.setSkyLightArray(new NibbleArray(nar.a.clone(), 4));
                     } else {
-                        tSec.setSkyLightArray(null);
+                        if (tSec.getSkyLightArray() != null) {
+                            try {
+                                skyLightArray.set(tSec, null);
+                            } catch (Exception e) {
+                                tSec.setSkyLightArray(new NibbleArray(4096, 4));
+                            }
+                        }
                     }
                     tSec.recalcBlockCounts();
                     targetSections[i] = tSec;
