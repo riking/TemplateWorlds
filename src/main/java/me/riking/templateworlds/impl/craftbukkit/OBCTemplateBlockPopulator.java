@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.server.v1_6_R1.Chunk;
+import net.minecraft.server.v1_6_R1.ChunkSection;
 import net.minecraft.server.v1_6_R1.Entity;
 import net.minecraft.server.v1_6_R1.EntityHuman;
 import net.minecraft.server.v1_6_R1.EntityTypes;
 import net.minecraft.server.v1_6_R1.NBTTagCompound;
+import net.minecraft.server.v1_6_R1.NibbleArray;
 import net.minecraft.server.v1_6_R1.TileEntity;
 import net.minecraft.server.v1_6_R1.WorldServer;
 
@@ -33,7 +35,42 @@ public class OBCTemplateBlockPopulator extends BlockPopulator {
         Chunk target = targetChunk.getHandle();
 
         // Copy ChunkSections (blocks, data, light)
-        target.a(source.i());
+        {
+            ChunkSection[] sourceSections = source.i();
+            ChunkSection[] targetSections = target.i();
+            for (int i = 0; i < sourceSections.length; i++) {
+                ChunkSection sSec = sourceSections[i];
+                if (sSec == null) {
+                    targetSections[i] = null;
+                } else {
+                    ChunkSection tSec = targetSections[i];
+                    if (tSec == null) {
+                        tSec = new ChunkSection(i, target.world.worldProvider.g); // from Chunk constructor
+                    }
+                    // Straight NibbleArray clones
+                    tSec.setIdArray(sSec.getIdArray().clone());
+                    tSec.setDataArray(new NibbleArray(sSec.getDataArray().a.clone(), 4));
+                    tSec.setEmittedLightArray(new NibbleArray(sSec.getEmittedLightArray().a.clone(), 4));
+
+                    // Could be null
+                    NibbleArray nar = sSec.getExtendedIdArray();
+                    if (nar != null) {
+                        tSec.setExtendedIdArray(new NibbleArray(nar.a.clone(), 4));
+                    } else {
+                        tSec.setExtendedIdArray(null);
+                    }
+                    nar = sSec.getSkyLightArray();
+                    if (nar != null) {
+                        tSec.setSkyLightArray(new NibbleArray(nar.a.clone(), 4));
+                    } else {
+                        tSec.setSkyLightArray(null);
+                    }
+                    tSec.recalcBlockCounts();
+                    targetSections[i] = tSec;
+                }
+            }
+            target.a(targetSections); // setChunkSections()
+        }
 
         // Copy Entities
         for (List<?> l : source.entitySlices) {
