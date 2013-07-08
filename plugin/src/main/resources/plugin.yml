@@ -5,5 +5,5 @@ description: Plugin library to reset a world to a template
 author: riking
 website: http://dev.bukkit.org/bukkit-plugins/templateworlds/
 
-main: me.riking.templateworlds.plugin.TemplateWorlds
+main: com.github.riking.templateworlds.plugin.TemplateWorlds
 load: STARTUP
