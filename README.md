@@ -11,7 +11,7 @@ Only the classes in the `api` package should be used by other plugins.
 #### Simple usage
 Here, we create a 'lobby' world which is a clone of 'lobby-template'. Note that the template world is not stored, while the created lobby world is. 
 ```java
-ApiMain twApi = ((TemplateWorlds) getPluginManager().getPlugin("TemplateWorlds")).getApi();
+ApiMain templateApi = getServer().getServicesManager().getRegistration(ApiMain.class).getProvider();
 World templateLobby = getServer().createWorld(new WorldCreator("lobby-template"));
 this.lobby = twApi.createWorld("lobby", templateLobby);
 ```
