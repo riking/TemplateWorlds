@@ -2,6 +2,7 @@ package me.riking.templateworlds.plugin;
 
 import me.riking.templateworlds.api.ApiMain;
 
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -48,5 +49,10 @@ public class TemplateWorlds extends JavaPlugin {
 
     public static ApiMain getApiStatic() {
         return instance.api;
+    }
+
+    @Override
+    public ChunkGenerator getDefaultWorldGenerator(String world, String name) {
+        return api.getTemplatedGenerator(world, name);
     }
 }
