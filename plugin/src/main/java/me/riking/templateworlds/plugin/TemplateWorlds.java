@@ -38,29 +38,14 @@ public class TemplateWorlds extends JavaPlugin {
         instance = null;
     }
 
-    /**
-     * Get the instance of the plugin.
-     *
-     * @return the plugin instance, or null if disabled
-     */
     public static TemplateWorlds getInstance() {
         return instance;
     }
 
-    /**
-     * Get the ApiMain class, which is used for all operations.
-     *
-     * @return the ApiMain
-     */
     public ApiMain getApi() {
         return api;
     }
 
-    /**
-     * Get the ApiMain class, which is used for all operations.
-     *
-     * @return the ApiMain
-     */
     public static ApiMain getApiStatic() {
         return instance.api;
     }
