@@ -20,7 +20,7 @@ import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class OBCTemplateBlockPopulator extends BlockPopulator {
-    private final World templateWorld;
+    public World templateWorld;
     private static Field extendedIdArray;
     private static Field skyLightArray;
 

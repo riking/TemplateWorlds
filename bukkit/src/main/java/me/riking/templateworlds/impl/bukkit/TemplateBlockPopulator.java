@@ -26,7 +26,7 @@ import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 
 public class TemplateBlockPopulator extends BlockPopulator {
-    private final World templateWorld;
+    public World templateWorld;
 
     public TemplateBlockPopulator(World world) {
         templateWorld = world;
