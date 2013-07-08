@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>templateworlds-plugin</artifactId>
 	<packaging>jar</packaging>
+	<name>TemplateWorlds</name>
 	<parent>
 		<groupId>me.riking.lib.templateworlds</groupId>
 		<artifactId>templateworlds-parent</artifactId>
@@ -44,6 +45,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>TemplateWorlds-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

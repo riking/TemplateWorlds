@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>templateworlds</artifactId>
 	<packaging>jar</packaging>
-	<name>TemplateWorlds</name>
+	<name>TemplateWorlds API</name>
 	<description>Make a world that can revert back to a unchanging state</description>
 	<url>http://dev.bukkit.org/bukkit-plugins/templateworlds/</url>
 	<issueManagement>
@@ -21,7 +21,6 @@
 	<!-- Building for release goals: mvn clean install source:jar javadoc:jar -->
 
 	<build>
-		<finalName>TemplateWorlds-${project.version}</finalName>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
 		<resources>
