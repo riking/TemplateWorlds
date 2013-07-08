@@ -105,4 +105,17 @@ public interface ApiMain {
      *             templated world
      */
     public void resetArea(World templated, Location a, Location b);
+
+    /**
+     * Change the template for the given templated world.
+     * <p>
+     * After changing the template, you must reset the area for the changes to
+     * take effect.
+     *
+     * @param templated A templated world
+     * @param newTemplate The world to use as the new template
+     * @throws IllegalArgumentException if the provided world is not a
+     *             templated world
+     */
+    public void changeTemplate(World templated, World newTemplate);
 }

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import me.riking.templateworlds.impl.common.BaseApiMain;
+import me.riking.templateworlds.impl.common.TemplatedGenerator;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.World;
@@ -39,5 +40,17 @@ public class BukkitApiMain extends BaseApiMain {
         pops.addAll(extraPopulators);
         w.setAutoSave(false);
         return w;
+    }
+
+    @Override
+    public void changeTemplate(World templated, World newTemplate) {
+        validateTemplatedWorld(templated);
+        TemplatedGenerator gen = (TemplatedGenerator) templated.getGenerator();
+        BlockPopulator pop1 = templated.getPopulators().get(0);
+
+        gen.templateWorld = newTemplate;
+        if (pop1 instanceof TemplateBlockPopulator) {
+            ((TemplateBlockPopulator) pop1).templateWorld = newTemplate;
+        }
     }
 }
