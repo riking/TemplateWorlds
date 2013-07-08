@@ -1,7 +1,7 @@
 package me.riking.templateworlds.api;
 
 import me.riking.templateworlds.impl.bukkit.BukkitApiMain;
-import me.riking.templateworlds.impl.craftbukkit.CBApiMain;
+import me.riking.templateworlds.impl.craftbukkit1_6_R1.CBApiMain;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

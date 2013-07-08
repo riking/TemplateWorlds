@@ -1,4 +1,4 @@
-package me.riking.templateworlds.impl.craftbukkit;
+package me.riking.templateworlds.impl.craftbukkit1_6_R1;
 
 import java.util.List;
 import java.util.Random;
