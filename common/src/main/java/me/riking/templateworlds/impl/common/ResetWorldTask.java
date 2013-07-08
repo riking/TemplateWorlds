@@ -11,7 +11,7 @@ import org.bukkit.util.Vector;
 public class ResetWorldTask extends BukkitRunnable {
     // one tick is 50000000 nanos
     // one milli is 1000000 nanos, which may be system granularity
-    public final static long ALLOCATION_NANOS = 2500000; // 5ms (1/10 tick)
+    public static final long ALLOCATION_NANOS = 7500000; // 7.5ms (5ms = 1/10 tick)
 
     private final World target;
     private final Iterator<Vector> iter;
