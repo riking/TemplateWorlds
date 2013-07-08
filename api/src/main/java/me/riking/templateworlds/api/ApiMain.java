@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
 
 public interface ApiMain {
@@ -38,6 +39,17 @@ public interface ApiMain {
      * @return a WorldCreator ready to create a World
      */
     public World createWorld(String name, World template, Collection<BlockPopulator> extraPopulators);
+
+    /**
+     * Get a templated ChunkGenerator for the given world.
+     * <p>
+     * This allows people to create templated worlds from the command line
+     * with Multiverse or from bukkit.yml.
+     *
+     * @param world the world this is being created for
+     * @param template a string that should be the template world
+     */
+    public ChunkGenerator getTemplatedGenerator(String world, String template);
 
     /**
      * Check whether the given World was created by this plugin.

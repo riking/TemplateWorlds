@@ -1,15 +1,16 @@
 package me.riking.templateworlds.impl.craftbukkit1_5_R3;
 
 import java.util.Collection;
-import java.util.List;
 
 import me.riking.templateworlds.impl.common.BaseApiMain;
 
 import org.apache.commons.lang.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 import org.bukkit.craftbukkit.v1_5_R3.util.Versioning;
 import org.bukkit.generator.BlockPopulator;
+import org.bukkit.generator.ChunkGenerator;
 
 public class CBApiMain extends BaseApiMain {
     public CBApiMain() {
@@ -18,13 +19,17 @@ public class CBApiMain extends BaseApiMain {
     }
 
     @Override
+    public ChunkGenerator getTemplatedGenerator(String world, String template) {
+        World temp = Bukkit.getWorld(template);
+        Validate.notNull(temp, "The right-hand side of the chunk generator string for TemplateWorlds must be a valid world to use as a template");
+        return new BiomedVoidGenerator(temp);
+    }
+
+    @Override
     public World createWorld(String name, World template) {
         Validate.notNull(template, "Template world cannot be null");
 
         World w = new WorldCreator(name).copy(template).generateStructures(false).generator(new BiomedVoidGenerator(template)).createWorld();
-        List<BlockPopulator> pops = w.getPopulators();
-        pops.clear();
-        pops.add(new OBCTemplateBlockPopulator(template));
         w.setAutoSave(false);
         return w;
     }
@@ -34,11 +39,7 @@ public class CBApiMain extends BaseApiMain {
         Validate.notNull(template, "Template world cannot be null");
         Validate.allElementsOfType(extraPopulators, BlockPopulator.class, "All extra populators must be BlockPopulators");
 
-        World w = new WorldCreator(name).copy(template).generateStructures(false).generator(new BiomedVoidGenerator(template)).createWorld();
-        List<BlockPopulator> pops = w.getPopulators();
-        pops.clear();
-        pops.add(new OBCTemplateBlockPopulator(template));
-        pops.addAll(extraPopulators);
+        World w = new WorldCreator(name).copy(template).generateStructures(false).generator(new BiomedVoidGenerator(template, extraPopulators)).createWorld();
         w.setAutoSave(false);
         return w;
     }

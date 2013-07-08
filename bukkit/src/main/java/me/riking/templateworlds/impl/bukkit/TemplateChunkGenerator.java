@@ -1,15 +1,33 @@
 package me.riking.templateworlds.impl.bukkit;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import me.riking.templateworlds.impl.common.TemplatedGenerator;
 
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.World;
+import org.bukkit.generator.BlockPopulator;
 
 public class TemplateChunkGenerator extends TemplatedGenerator {
+    private List<BlockPopulator> blockPopulators;
+
     public TemplateChunkGenerator(World world) {
         super(world);
+        blockPopulators = new ArrayList<BlockPopulator>(1);
+        blockPopulators.add(new TemplateBlockPopulator(world));
+    }
+
+    public TemplateChunkGenerator(World world, Collection<BlockPopulator> extraPops) {
+        this(world);
+        blockPopulators.addAll(extraPops);
+    }
+
+    @Override
+    public List<BlockPopulator> getDefaultPopulators(World target) {
+        return blockPopulators;
     }
 
     @Override

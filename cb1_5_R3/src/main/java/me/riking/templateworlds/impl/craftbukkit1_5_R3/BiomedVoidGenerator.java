@@ -1,15 +1,33 @@
 package me.riking.templateworlds.impl.craftbukkit1_5_R3;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import me.riking.templateworlds.impl.common.TemplatedGenerator;
 
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.World;
+import org.bukkit.generator.BlockPopulator;
 
 public class BiomedVoidGenerator extends TemplatedGenerator {
+    private List<BlockPopulator> blockPopulators;
+
     public BiomedVoidGenerator(World world) {
         super(world);
+        blockPopulators = new ArrayList<BlockPopulator>(1);
+        blockPopulators.add(new OBCTemplateBlockPopulator(world));
+    }
+
+    public BiomedVoidGenerator(World world, Collection<BlockPopulator> extraPops) {
+        this(world);
+        blockPopulators.addAll(extraPops);
+    }
+
+    @Override
+    public List<BlockPopulator> getDefaultPopulators(World target) {
+        return blockPopulators;
     }
 
     public short[][] generateExtBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
