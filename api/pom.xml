@@ -23,68 +23,21 @@
 	<build>
 		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
 		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-		<resources>
-			<resource>
-				<targetPath>.</targetPath>
-				<filtering>true</filtering>
-				<directory>${basedir}/src/main/resources/</directory>
-				<includes>
-					<include>*.yml</include>
-				</includes>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.0-beta-3</version>
-				<configuration>
-					<reportPlugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>2.7</version>
-							<configuration>
-								<subpackages>me.riking.templateworlds.api</subpackages>
-								<links>
-									<link>http://jd.bukkit.org/rb/apidocs</link>
-								</links>
-								<linksource>true</linksource>
-							</configuration>
-							<reportSets>
-								<reportSet>
-									<reports>
-										<report>javadoc</report>
-									</reports>
-								</reportSet>
-							</reportSets>
-						</plugin>
-					</reportPlugins>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.2.1</version>
 			</plugin>
 		</plugins>
 	</build>
+	<!-- 
 	<repositories>
-		<!-- This is required -->
 		<repository>
 			<id>bukkit-repo</id>
 			<url>http://repo.bukkit.org/content/groups/public/</url>
 		</repository>
 	</repositories>
+	-->
 	<dependencies>
 		<dependency>
 			<groupId>org.bukkit</groupId>
@@ -110,27 +63,4 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	<scm>
-		<url>https://github.com/riking/TemplateWorlds</url>
-		<developerConnection>scm:git:git@github.com:riking/TemplateWorlds.git</developerConnection>
-		<connection>scm:git:git@github.com:riking/TemplateWorlds.git</connection>
-	</scm>
-	<developers>
-		<developer>
-			<name>riking</name>
-			<id>@riking</id>
-			<email>rikingcoding@gmail.com</email>
-			<timezone>-8</timezone>
-			<roles>
-				<role>creator</role>
-				<role>maintainer</role>
-			</roles>
-		</developer>
-	</developers>
-	<licenses>
-		<license>
-			<name>BSD 2-Clause License</name>
-			<url>http://opensource.org/licenses/BSD-2-Clause</url>
-		</license>
-	</licenses>
 </project>

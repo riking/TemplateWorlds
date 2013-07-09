@@ -13,17 +13,10 @@
 
 	<!-- Building for release goals: mvn clean install source:jar javadoc:jar -->
 
-    <!--
-    To get org.bukkit dependencies, add this to your
-    ${user.home}/.m2/settings.xml, or download the
-    jars from http://dl.bukkit.org/
-	<repositories>
-		<repository>
-			<id>bukkit-repo</id>
-			<url>http://repo.bukkit.org/content/groups/public/</url>
-		</repository>
-	</repositories>
-    -->
+	<!-- To get org.bukkit dependencies, add this to your ${user.home}/.m2/settings.xml, 
+		or download the jars from http://dl.bukkit.org/ (or include this in your 
+		project, that works too) <repositories> <repository> <id>bukkit-repo</id> 
+		<url>http://repo.bukkit.org/content/groups/public/</url> </repository> </repositories> -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -65,4 +58,35 @@
 		<module>common</module>
 		<module>plugin</module>
 	</modules>
+
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+	
+	<scm>
+		<url>https://github.com/riking/TemplateWorlds</url>
+		<developerConnection>scm:git:git@github.com:riking/TemplateWorlds.git</developerConnection>
+		<connection>scm:git:git@github.com:riking/TemplateWorlds.git</connection>
+	</scm>
+	<developers>
+		<developer>
+			<name>riking</name>
+			<id>@riking</id>
+			<email>rikingcoding@gmail.com</email>
+			<timezone>-8</timezone>
+			<roles>
+				<role>creator</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>BSD 2-Clause License</name>
+			<url>http://opensource.org/licenses/BSD-2-Clause</url>
+		</license>
+	</licenses>
 </project>
