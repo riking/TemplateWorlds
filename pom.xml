@@ -13,14 +13,17 @@
 
 	<!-- Building for release goals: mvn clean install source:jar javadoc:jar -->
 
+    <!--
+    To get org.bukkit dependencies, add this to your
+    ${user.home}/.m2/settings.xml, or download the
+    jars from http://dl.bukkit.org/
 	<repositories>
-		<!-- This is required -->
 		<repository>
 			<id>bukkit-repo</id>
 			<url>http://repo.bukkit.org/content/groups/public/</url>
 		</repository>
 	</repositories>
-
+    -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
