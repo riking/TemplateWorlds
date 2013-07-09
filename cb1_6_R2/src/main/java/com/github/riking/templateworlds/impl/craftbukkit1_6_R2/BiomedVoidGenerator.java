@@ -1,4 +1,4 @@
-package com.github.riking.templateworlds.impl.craftbukkit1_6_R1;
+package com.github.riking.templateworlds.impl.craftbukkit1_6_R2;
 
 import java.util.ArrayList;
 import java.util.Collection;

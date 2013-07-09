@@ -1,22 +1,22 @@
-package com.github.riking.templateworlds.impl.craftbukkit1_6_R1;
+package com.github.riking.templateworlds.impl.craftbukkit1_6_R2;
 
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.v1_6_R1.Chunk;
-import net.minecraft.server.v1_6_R1.ChunkSection;
-import net.minecraft.server.v1_6_R1.Entity;
-import net.minecraft.server.v1_6_R1.EntityHuman;
-import net.minecraft.server.v1_6_R1.EntityTypes;
-import net.minecraft.server.v1_6_R1.NBTTagCompound;
-import net.minecraft.server.v1_6_R1.NibbleArray;
-import net.minecraft.server.v1_6_R1.TileEntity;
-import net.minecraft.server.v1_6_R1.WorldServer;
+import net.minecraft.server.v1_6_R2.Chunk;
+import net.minecraft.server.v1_6_R2.ChunkSection;
+import net.minecraft.server.v1_6_R2.Entity;
+import net.minecraft.server.v1_6_R2.EntityHuman;
+import net.minecraft.server.v1_6_R2.EntityTypes;
+import net.minecraft.server.v1_6_R2.NBTTagCompound;
+import net.minecraft.server.v1_6_R2.NibbleArray;
+import net.minecraft.server.v1_6_R2.TileEntity;
+import net.minecraft.server.v1_6_R2.WorldServer;
 
 import org.bukkit.World;
-import org.bukkit.craftbukkit.v1_6_R1.CraftChunk;
-import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_6_R2.CraftChunk;
+import org.bukkit.craftbukkit.v1_6_R2.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class OBCTemplateBlockPopulator extends BlockPopulator {

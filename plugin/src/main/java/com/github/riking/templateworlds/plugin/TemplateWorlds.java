@@ -15,7 +15,7 @@ public class TemplateWorlds extends JavaPlugin {
     public void onEnable() {
         instance = this;
         try {
-            api = new com.github.riking.templateworlds.impl.craftbukkit1_6_R1.CBApiMain();
+            api = new com.github.riking.templateworlds.impl.craftbukkit1_6_R2.CBApiMain();
             getLogger().info("TemplateWorlds loaded with 1.6.1 CraftBukkit provider!");
         } catch (Throwable t) {
             try {

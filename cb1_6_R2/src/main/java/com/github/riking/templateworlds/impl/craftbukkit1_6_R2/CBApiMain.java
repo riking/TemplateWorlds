@@ -1,4 +1,4 @@
-package com.github.riking.templateworlds.impl.craftbukkit1_6_R1;
+package com.github.riking.templateworlds.impl.craftbukkit1_6_R2;
 
 import java.util.Collection;
 
@@ -7,7 +7,7 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
-import org.bukkit.craftbukkit.v1_6_R1.util.Versioning;
+import org.bukkit.craftbukkit.v1_6_R2.util.Versioning;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 

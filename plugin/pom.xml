@@ -39,7 +39,7 @@
 		</dependency>
 		<dependency>
 			<groupId>me.riking.lib.templateworlds</groupId>
-			<artifactId>templateworlds-impl-cb-1-6-R1</artifactId>
+			<artifactId>templateworlds-impl-cb-1-6-R2</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
 	</dependencies>
