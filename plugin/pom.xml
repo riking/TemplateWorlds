@@ -18,27 +18,27 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>me.riking.lib.templateworlds</groupId>
+			<groupId>com.github.riking.lib.templateworlds</groupId>
 			<artifactId>templateworlds</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>me.riking.lib.templateworlds</groupId>
+			<groupId>com.github.riking.lib.templateworlds</groupId>
 			<artifactId>templateworlds-impl-common</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>me.riking.lib.templateworlds</groupId>
+			<groupId>com.github.riking.lib.templateworlds</groupId>
 			<artifactId>templateworlds-impl-bukkit</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>me.riking.lib.templateworlds</groupId>
+			<groupId>com.github.riking.lib.templateworlds</groupId>
 			<artifactId>templateworlds-impl-cb-1-5-R3</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>me.riking.lib.templateworlds</groupId>
+			<groupId>com.github.riking.lib.templateworlds</groupId>
 			<artifactId>templateworlds-impl-cb-1-6-R2</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
