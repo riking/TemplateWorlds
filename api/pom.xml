@@ -17,39 +17,12 @@
 		<relativePath>..</relativePath>
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
-	
-	<!-- Building for release goals: mvn clean install source:jar javadoc:jar -->
 
-	<build>
-		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-	<!-- 
-	<repositories>
-		<repository>
-			<id>bukkit-repo</id>
-			<url>http://repo.bukkit.org/content/groups/public/</url>
-		</repository>
-	</repositories>
-	-->
 	<dependencies>
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.6.1-R0.1-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.bukkit</groupId>
-			<artifactId>craftbukkit</artifactId>
-			<version>1.6.1-R0.1-SNAPSHOT</version>
+			<version>${bukkit.version}</version>
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
