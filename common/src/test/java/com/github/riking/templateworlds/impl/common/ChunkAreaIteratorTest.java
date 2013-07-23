@@ -3,7 +3,7 @@ package com.github.riking.templateworlds.impl.common;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang.Validate;
 import org.bukkit.util.Vector;
 import org.junit.Test;
 
