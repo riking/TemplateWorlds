@@ -54,6 +54,15 @@ public abstract class BaseApiMain implements ApiMain {
     }
 
     @Override
+    public void resetAreaGradually(World templated, int chunkMinX, int chunkMinZ, int chunkMaxX, int chunkMaxZ, Runnable callback, double timeFraction) {
+        validateTemplatedWorld(templated);
+        Validate.isTrue(chunkMinX <= chunkMaxX);
+        Validate.isTrue(chunkMinZ <= chunkMaxZ);
+        ChunkAreaIterator iter = new ChunkAreaIterator(chunkMinX, chunkMinZ, chunkMaxX, chunkMaxZ);
+        new ResetWorldTask(templated, iter, plugin, callback).runTaskTimer(plugin, 0, 1);
+    }
+
+    @Override
     public void resetArea(World templated, Location a, Location b) {
         validateTemplatedWorld(templated);
 

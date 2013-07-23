@@ -93,6 +93,30 @@ public interface ApiMain {
     public void resetAreaGradually(World templated, Location a, Location b, Runnable callback);
 
     /**
+     * Reset all chunks in the given area to the chunks in the template world
+     * over time. The provided Runnable will be executed once the reset is
+     * complete.
+     *
+     * @param templated A templated world
+     * @param chunkMinX low chunk-coord X to regenerate
+     * @param chunkMinZ low chunk-coord Z to regenerate
+     * @param chunkMaxX high chunk-coord X to regenerate
+     * @param chunkMaxZ high chunk-coord Z to regenerate
+     * @param callback A Runnable to execute once the resetting is completed.
+     *            It will be executed on the server main thread. May be null.
+     * @param timeAllotment What FRACTION of 1/20th of a second (one tick) to
+     *            spend doing the reset. If the allotment is less than the
+     *            time it takes to reset a chunk, only 1 chunk will be reset
+     *            per tick. Be warned that values in excess of 100 billion may
+     *            also exhibit this behavior, due to overflow of the long
+     *            type.
+     * @throws IllegalArgumentException if max < min
+     * @throws IllegalArgumentException if the provided world is not a
+     *             templated world
+     */
+    public void resetAreaGradually(World templated, int chunkMinX, int chunkMinZ, int chunkMaxX, int chunkMaxZ, Runnable callback, double timeAllotment);
+
+    /**
      * Reset all chunks in the given area to the chunks in the template world.
      *
      * @param templated A templated world
