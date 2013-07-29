@@ -8,6 +8,12 @@ import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
 
+/**
+ * This class is a plugin's access into TemplateWorlds. Instances are
+ * retrieved through the Bukkit {@link org.bukkit.plugin.ServicesManager
+ * ServicesManager} - this is to allow easy updating across Minecraft
+ * versions.
+ */
 public interface ApiMain {
     /**
      * Please do not call this method.
