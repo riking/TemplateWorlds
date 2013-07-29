@@ -48,8 +48,20 @@ public interface ApiMain {
      *
      * @param world the world this is being created for
      * @param template a string that should be the template world
+     * @return a ChunkGenerator that you can give to a WorldCreator to make a
+     *         templated world
      */
     public ChunkGenerator getTemplatedGenerator(String world, String template);
+
+    /**
+     * Get a ChunkGenerator that will only create empty (all air / void)
+     * chunks. This is useful when loading the world to use as the template,
+     * as it is possible for the templated world to cause new chunks to be
+     * generated on the template when that is not desirable.
+     *
+     * @return a ChunkGenerator that will only create empty chunks
+     */
+    public ChunkGenerator getVoidGenerator();
 
     /**
      * Check whether the given World was created by this plugin.

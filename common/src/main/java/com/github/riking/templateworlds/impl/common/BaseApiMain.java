@@ -5,6 +5,7 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
 
 import com.github.riking.templateworlds.api.ApiMain;
@@ -29,6 +30,14 @@ public abstract class BaseApiMain implements ApiMain {
 
     protected void validateTemplatedWorld(World world) {
         Validate.isTrue(isTemplatedWorld(world), "You must provide a templated world");
+    }
+
+    // Why static? Because I can and it works.
+    private static final VoidGenerator voidGenInstance = new VoidGenerator();
+
+    @Override
+    public ChunkGenerator getVoidGenerator() {
+        return voidGenInstance;
     }
 
     @Override
