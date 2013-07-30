@@ -8,6 +8,19 @@ This project uses [semantic versioning](http://semver.org/spec/v2.0.0.html) for 
 ### Usage guide
 Only the classes in the `api` package should be used by other plugins.
 
+For development with Maven, put this in your pom.xml `dependencies` section:
+```xml
+    <dependency>
+      <groupId>com.github.riking.lib.templateworlds</groupId>
+    	<artifactId>templateworlds</artifactId>
+    	<version>[2.1.0, 3.0.0)</version>
+    	<scope>provided</scope>
+    </dependency>
+```
+This lets you develop with updates for any API upgrades until a breakage, which would be version 3.0.0.
+*(If you are able to provide Maven repository hosting, please contact me and I will put the info here!)*
+
+
 #### Simple usage
 Here, we create a 'lobby' world which is a clone of 'lobby-template'. Note that the template world is not stored, while the created lobby world is. 
 ```java
