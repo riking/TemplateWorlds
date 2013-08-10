@@ -33,3 +33,54 @@ Use the resetArea() method over the whole area that the lobby is in:
 ```java
 twApi.resetArea(this.lobby, -5, -5, 5, 5);
 ```
+
+#### Multiple templates
+If you want to have multiple maps that you cycle through for your game, `changeTemplate()` will be the method you need.
+
+Here's an example map cycle procedure. Q is some arbitrary part of your plugin that holds the variables shown.
+```java
+public class Q {
+    // ...
+    ApiMain twApi;
+    World gameWorld; // Playing world. This is 'templated'
+    World currentMap;
+    List<String> maps;
+    // ...
+    public String nextMap() {
+        int ind = random.nextInt(maps.size());
+        return maps.get(ind);
+    }
+    // ...
+}
+
+public class ChangeMapPart1 implements Runnable {
+    private Q q;
+    public ChangeMapPart1(Q q) {
+        this.q = q;
+    }
+
+    public void run() {
+        // Get everyone out
+        // !! Beware of BUKKIT-1331 - if you trigger on death, this must be run through scheduler
+        for (Player p : q.gameWorld.getPlayers()) {
+            p.teleport(q.lobbyEntry);
+        }
+
+        // Unload the old map (optional)
+        Bukkit.unloadWorld(q.currentMap, false);
+
+        // Choose the next map. Load it with a VoidGenerator to avoid save inflation. 
+        String nextMap = q.nextMap();
+        // broadcast something in chat
+        // [G] Loading map ctf_towers...
+        q.currentMap = new WorldCreator(nextMap).generator(q.twApi.getVoidGenerator());
+
+        // Change the template being used by the game world
+        q.twApi.changeTemplate(q.gameWorld, q.currentMap);
+
+        // Change the GameWorld to the new map (this is an approx. 1000x1000 area - (-512, +512))
+        q.twApi.resetAreaGradually(q.gameWorld, -32, -32, 32, 32, new ChangeMapPart2(q));
+    }
+}
+
+```
