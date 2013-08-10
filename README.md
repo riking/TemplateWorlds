@@ -35,7 +35,8 @@ twApi.resetArea(this.lobby, -5, -5, 5, 5);
 ```
 
 #### Multiple templates
-If you want to have multiple maps that you cycle through for your game, `changeTemplate()` will be the method you need.
+If you want to have multiple maps that you cycle through for your game, you will need to call `changeTemplate(World, World)` followed by a `resetArea`.
+changeTemplate will modify the internal reference used by the generator, which will be referred to during resetArea.
 
 Here's an example map cycle procedure. Q is some arbitrary part of your plugin that holds the variables shown.
 ```java
