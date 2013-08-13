@@ -27,12 +27,8 @@ import org.bukkit.entity.Boat;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Damageable;
-import org.bukkit.entity.Egg;
-import org.bukkit.entity.EnderDragon;
-import org.bukkit.entity.EnderDragonPart;
 import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Explosive;
 import org.bukkit.entity.FallingBlock;
@@ -49,12 +45,10 @@ import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.LightningStrike;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Minecart;
-import org.bukkit.entity.Monster;
 import org.bukkit.entity.Ocelot;
 import org.bukkit.entity.Painting;
 import org.bukkit.entity.Pig;
 import org.bukkit.entity.PigZombie;
-import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Sheep;
 import org.bukkit.entity.Skeleton;
@@ -71,8 +65,6 @@ import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.FurnaceInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.potion.PotionEffect;
-
-import com.github.riking.templateworlds.plugin.TemplateWorlds;
 
 public class TemplateBlockPopulator extends BlockPopulator {
     public World templateWorld;
@@ -213,7 +205,7 @@ public class TemplateBlockPopulator extends BlockPopulator {
                     try {
                         nent = world.spawnEntity(oent.getLocation(), oent.getType());
                     } catch (IllegalArgumentException e) {
-                        TemplateWorlds.getInstance().getLogger().warning("Skipping entity of type " + oent.getType() + ": Cannot instantiate via Bukkit API");
+                        System.err.println("[TemplateWorlds] Skipping entity of type " + oent.getType() + ": Cannot instantiate via Bukkit API");
                         continue;
                     }
                 }
