@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
@@ -31,6 +30,7 @@ public class TemplateChunkGenerator extends TemplatedGenerator {
         return blockPopulators;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public short[][] generateExtBlockSections(World contextWorld, Random worldRandom, int cx, int cz, BiomeGrid biomes) {
         ChunkSnapshot templateChunk = templateWorld.getChunkAt(cx, cz).getChunkSnapshot(true, true, false);

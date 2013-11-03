@@ -73,6 +73,7 @@ public class TemplateBlockPopulator extends BlockPopulator {
         templateWorld = world;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void populate(World world, Random random, Chunk targetChunk) {
         Chunk sourceChunk = templateWorld.getChunkAt(targetChunk.getX(), targetChunk.getZ());
