@@ -42,6 +42,11 @@
 			<artifactId>templateworlds-impl-cb-1-6-R2</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.riking.lib.templateworlds</groupId>
+			<artifactId>templateworlds-impl-cb-1-6-R3</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

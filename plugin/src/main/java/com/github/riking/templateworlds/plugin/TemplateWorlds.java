@@ -14,24 +14,37 @@ public class TemplateWorlds extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        try {
-            api = new com.github.riking.templateworlds.impl.craftbukkit1_6_R2.CBApiMain();
-            getLogger().info("TemplateWorlds loaded with 1.6.1 CraftBukkit provider!");
-        } catch (Throwable t) {
-            try {
-                api = new com.github.riking.templateworlds.impl.craftbukkit1_5_R3.CBApiMain();
-                getLogger().info("TemplateWorlds loaded with 1.5.2 CraftBukkit provider!");
-            } catch (Throwable t2) {
-                try {
-                    api = new com.github.riking.templateworlds.impl.bukkit.BukkitApiMain();
-                    getLogger().info("TemplateWorlds loaded with Bukkit-only loader!");
-                } catch (Throwable t3) {
-                    getLogger().severe("Unable to load TemplateWorlds, even with Bukkit-only. Was there a breaking API change?");
-                }
-            }
-        }
+        if (!createApi()) return;
+
         api.onEnable(this);
         getServer().getServicesManager().register(ApiMain.class, api, this, ServicePriority.Low);
+    }
+
+    private boolean createApi() {
+        try {
+            api = new com.github.riking.templateworlds.impl.craftbukkit1_6_R3.CBApiMain();
+            getLogger().info("TemplateWorlds loaded with 1.6.4 CraftBukkit provider!");
+            return true;
+        } catch (Throwable t) { }
+        try {
+            api = new com.github.riking.templateworlds.impl.craftbukkit1_6_R2.CBApiMain();
+            getLogger().info("TemplateWorlds loaded with 1.6.2 CraftBukkit provider!");
+            return true;
+        } catch (Throwable t) { }
+        try {
+            api = new com.github.riking.templateworlds.impl.craftbukkit1_5_R3.CBApiMain();
+            getLogger().info("TemplateWorlds loaded with 1.5.2 CraftBukkit provider!");
+            return true;
+        } catch (Throwable t) { }
+        try {
+            api = new com.github.riking.templateworlds.impl.bukkit.BukkitApiMain();
+            getLogger().info("TemplateWorlds loaded with Bukkit-only loader!");
+            return true;
+        } catch (Throwable t) {
+            getLogger().severe("Unable to load TemplateWorlds, even with Bukkit-only. Was there a breaking API change?");
+            getServer().getPluginManager().disablePlugin(this);
+            return false;
+        }
     }
 
     @Override
